@@ -140,3 +140,4 @@ C:\Users\mansi.gawande\source\repos\novSocial_media\novSocial_media\obj\Debug\ne
 C:\Users\mansi.gawande\source\repos\novSocial_media\novSocial_media\obj\Debug\net8.0\novSocial_media.pdb
 C:\Users\mansi.gawande\source\repos\novSocial_media\novSocial_media\obj\Debug\net8.0\novSocial_media.genruntimeconfig.cache
 C:\Users\mansi.gawande\source\repos\novSocial_media\novSocial_media\obj\Debug\net8.0\ref\novSocial_media.dll
+C:\Users\mansi.gawande\source\repos\novSocial_media\novSocial_media\obj\Debug\net8.0\novSocial_media.sourcelink.json

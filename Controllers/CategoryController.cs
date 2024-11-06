@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using novSocial_media.Data;
 using novSocial_media.Models;
 namespace novSocial_media.Controllers
@@ -17,7 +18,7 @@ namespace novSocial_media.Controllers
         }
         public IActionResult Create()
         {
-            return View();
+            return View(); // get action
         }
         [HttpPost]
         public IActionResult Create(Category obj) //to add this category object to the category table.
@@ -35,6 +36,7 @@ namespace novSocial_media.Controllers
             {
                 _db.Categories.Add(obj); // pass obj of Category type.
                 _db.SaveChanges(); // go to db save changes
+                TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index"); // after add go view all category
             }
             return View();
@@ -46,7 +48,7 @@ namespace novSocial_media.Controllers
             {
                 return NotFound();
             }
-            Category categorydb = _db.Categories.Find(id);
+            Category? categorydb = _db.Categories.Find(id);
             if (categorydb == null)
             {
                 return NotFound();
@@ -57,22 +59,44 @@ namespace novSocial_media.Controllers
         [HttpPost]
         public IActionResult Edit(Category obj) //to add this category object to the category table.
         {
-            if (obj.Name == obj.DisplayOrder.ToString()) // name = 55 & order 55 then show what
-            {
-                ModelState.AddModelError("name", "The Display Order cannot exactly match the Name.");
-            }
-            if (obj.Name != null && obj.Name.ToLower() == "test")// tag halper asp-validation None, model-only show only model defined error  @ custom validation
-            {
-                ModelState.AddModelError("", "Test is an invalid value");
-            }
-
+   
             if (ModelState.IsValid) // server side validation
             {
-                _db.Categories.Add(obj); // pass obj of Category type.
+                _db.Categories.Update(obj); // pass obj of Category type.
                 _db.SaveChanges(); // go to db save changes
+                TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index"); // after add go view all category
             }
             return View();
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            Category categorydb = _db.Categories.Find(id);
+            if (categorydb == null)
+            {
+                return NotFound();
+            }
+            return View(categorydb);
+
+        }
+        [HttpPost , ActionName("Delete") ]
+        public IActionResult DeletePOST(int? id) //to add this category object to the category table.
+        {
+            Category? obj = _db.Categories.Find(id);
+            if(obj == null)
+            {
+                return NotFound();
+            }
+            _db.Categories.Remove(obj);
+            _db.SaveChanges(); // save chages agter delete
+            TempData["success"] = "Category deleted successfully";
+            return RedirectToAction("Index"); // after delete go view all category
+
         }
     }
 
