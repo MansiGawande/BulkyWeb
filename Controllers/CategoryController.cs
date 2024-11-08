@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using novSocial_media.Data;
-using novSocial_media.Models;
+﻿using Bulky.DataAccess.Data;
+using Bulky.Models.Models;
+using Microsoft.AspNetCore.Mvc;
 namespace novSocial_media.Controllers
 {
     public class CategoryController : Controller // this class inherit the base Controller class from asp.net mvc

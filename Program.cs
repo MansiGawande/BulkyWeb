@@ -1,7 +1,8 @@
+
+using Bulky.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
-using novSocial_media.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

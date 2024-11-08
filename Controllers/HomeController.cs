@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using novSocial_media.Models;
 using System.Diagnostics;
 
 namespace novSocial_media.Controllers
@@ -26,7 +25,7 @@ namespace novSocial_media.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new Bulky.Models.Models.ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
